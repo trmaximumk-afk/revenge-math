@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>리벤지수학 — 6개월 약술형논술 합격 운영 시스템 | 프라임K수학·맥시멈K컨설팅</title>
+<meta name="description" content="수학 3~5등급 학생을 위한 6개월 약술형논술 합격 운영 시스템. 논술 + 수능최저 + 모의고사 + 개별 컨설팅. 2026년 6월 6일 개강, 정원 10명.">
+<meta property="og:title" content="리벤지수학 — 합격 운영 시스템">
+<meta property="og:description" content="논술만으론 부족하다. 6개월 풀패키지로 완성하는 약술형논술 합격 운영 시스템.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --navy:#0a1424;
+    --navy-2:#0d1b2e;
+    --navy-3:#1a2a44;
+    --gold:#d4a843;
+    --gold-light:#e8c66b;
+    --gold-dark:#b88c2a;
+    --cream:#f5f2eb;
+    --cream-2:#ece7d8;
+    --text:#1a1a1a;
+    --muted:#6b6b6b;
+    --line:rgba(13,27,46,0.12);
+    --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Pretendard','Segoe UI','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    line-height:1.65;
+    -webkit-text-size-adjust:100%;
+    word-break:keep-all;
+  }
+  .container{max-width:760px;margin:0 auto;padding:0 20px}
+
+  /* ============ HERO ============ */
+  .hero{
+    background:radial-gradient(ellipse at top,var(--navy-3) 0%,var(--navy) 60%,#050a13 100%);
+    color:#fff;
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+  }
+  /* shimmer 광택 효과 */
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-100px;left:-100px;
+    width:400px;height:400px;
+    background:radial-gradient(circle,rgba(212,168,67,0.18) 0%,transparent 60%);
+    pointer-events:none;
+    filter:blur(20px);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    bottom:-150px;right:-100px;
+    width:350px;height:350px;
+    background:radial-gradient(circle,rgba(212,168,67,0.12) 0%,transparent 60%);
+    pointer-events:none;
+    filter:blur(20px);
+  }
+  .hero-inner{position:relative;z-index:1}
+  .hero-brand{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:3px;
+    margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .hero-logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+    background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 50%,var(--gold-dark) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    line-height:1.1;
+  }
+  .hero-tagline{
+    font-size:18px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:8px;
+    line-height:1.4;
+  }
+  .hero-tagline .accent{color:var(--gold)}
+  .hero-target{
+    display:inline-block;
+    background:rgba(212,168,67,0.15);
+    border:1px solid rgba(212,168,67,0.4);
+    color:var(--gold-light);
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14.5px;
+    font-weight:700;
+    margin:18px 0 22px;
+  }
+  .hero-sub{
+    font-size:15px;
+    color:rgba(255,255,255,0.78);
+    margin-bottom:28px;
+    line-height:1.7;
+  }
+  .hero-meta{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:28px;
+  }
+  .badge{
+    display:inline-block;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(212,168,67,0.35);
+    color:var(--gold);
+    padding:7px 13px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:700;
+  }
+  .badge.solid{
+    background:var(--gold);
+    color:var(--navy);
+    border-color:var(--gold);
+  }
+
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    max-width:380px;
+    background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 50%,var(--gold-dark) 100%);
+    color:var(--navy);
+    padding:18px 24px;
+    border-radius:14px;
+    font-size:17px;
+    font-weight:800;
+    text-decoration:none;
+    box-shadow:0 6px 24px rgba(212,168,67,0.4),inset 0 1px 0 rgba(255,255,255,0.3);
+    transition:transform 0.15s,box-shadow 0.15s;
+  }
+  .cta-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(212,168,67,0.5)}
+  .cta-note{
+    font-size:13px;
+    color:rgba(255,255,255,0.65);
+    margin-top:14px;
+  }
+
+  /* ============ SECTION COMMON ============ */
+  section{padding:64px 0;position:relative}
+  section.dark{background:var(--navy-2);color:#fff}
+  section.dark h2{color:#fff}
+  section.dark .section-sub{color:rgba(255,255,255,0.65)}
+
+  .section-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .section-divider::before,.section-divider::after{
+    content:"";
+    width:30px;
+    height:2px;
+    background:var(--gold);
+  }
+  .section-divider span{
+    margin:0 12px;
+    color:var(--gold);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:3px;
+  }
+  h2{
+    font-size:28px;
+    line-height:1.3;
+    font-weight:900;
+    color:var(--navy);
+    text-align:center;
+    margin-bottom:10px;
+    letter-spacing:-0.5px;
+  }
+  h2 .num{
+    display:inline-block;
+    color:var(--gold);
+    margin-right:6px;
+  }
+  .section-sub{
+    font-size:14.5px;
+    color:var(--muted);
+    text-align:center;
+    margin-bottom:36px;
+    line-height:1.6;
+  }
+
+  /* ============ DIAGNOSIS (번호 카드 3개) ============ */
+  .diag-stack{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .diag-card{
+    background:#fff;
+    border-radius:16px;
+    padding:26px 24px;
+    box-shadow:0 4px 20px rgba(13,27,46,0.08);
+    position:relative;
+    overflow:hidden;
+    border-left:4px solid var(--gold);
+  }
+  .diag-card .num-big{
+    position:absolute;
+    top:14px;right:18px;
+    font-size:56px;
+    font-weight:900;
+    color:rgba(212,168,67,0.12);
+    line-height:1;
+    letter-spacing:-3px;
+  }
+  .diag-card h3{
+    font-size:18.5px;
+    color:var(--navy);
+    font-weight:800;
+    margin-bottom:10px;
+    position:relative;
+    z-index:1;
+  }
+  .diag-card p{
+    font-size:14.5px;
+    color:#3a3a3a;
+    line-height:1.7;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ============ 4 SYSTEMS (원형 인포그래픽) ============ */
+  .sys-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px 16px;
+  }
+  .sys-item{text-align:center}
+  .sys-circle{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--navy-3) 0%,var(--navy) 100%);
+    border:3px solid var(--gold);
+    margin:0 auto 14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    box-shadow:0 6px 20px rgba(13,27,46,0.25);
+    position:relative;
+  }
+  .sys-circle::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:50%;
+    border:1px solid rgba(212,168,67,0.3);
+    box-shadow:0 0 16px rgba(212,168,67,0.2);
+  }
+  .sys-icon{font-size:28px;line-height:1;margin-bottom:4px}
+  .sys-num{
+    font-size:11px;
+    font-weight:800;
+    color:var(--gold);
+    letter-spacing:2px;
+  }
+  .sys-title{
+    font-size:16px;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:6px;
+  }
+  .sys-desc{
+    font-size:13px;
+    color:var(--muted);
+    line-height:1.55;
+    padding:0 4px;
+  }
+
+  /* ============ ROADMAP (6개월 가로 단계) ============ */
+  .roadmap-section{background:var(--navy-2);color:#fff;padding:64px 0}
+  .roadmap-section h2{color:#fff}
+  .roadmap-section .section-sub{color:rgba(255,255,255,0.7)}
+  .roadmap{
+    position:relative;
+    padding:16px 0;
+  }
+  .rm-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    position:relative;
+    gap:6px;
+  }
+  .rm-line::before{
+    content:"";
+    position:absolute;
+    top:30px;left:8%;right:8%;
+    height:2px;
+    background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);
+    z-index:0;
+  }
+  .rm-step{
+    flex:1;
+    min-width:0;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .rm-circle{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 60%,var(--gold-dark) 100%);
+    color:var(--navy);
+    margin:0 auto 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:14px;
+    box-shadow:0 4px 12px rgba(212,168,67,0.35);
+    border:3px solid var(--navy-2);
+  }
+  .rm-month{
+    font-size:11px;
+    font-weight:800;
+    color:var(--gold);
+    letter-spacing:1px;
+    margin-bottom:4px;
+  }
+  .rm-label{
+    font-size:12px;
+    color:#fff;
+    font-weight:600;
+    line-height:1.35;
+    padding:0 2px;
+  }
+
+  /* ============ SCHEDULE (알약+부호) ============ */
+  .pill-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .pill{
+    background:linear-gradient(135deg,var(--navy-3) 0%,var(--navy) 100%);
+    color:#fff;
+    padding:14px 22px;
+    border-radius:50px;
+    font-size:14px;
+    font-weight:700;
+    box-shadow:0 4px 14px rgba(13,27,46,0.2);
+    border:2px solid var(--gold);
+    min-width:140px;
+    text-align:center;
+  }
+  .pill .pill-time{
+    display:block;
+    font-size:11px;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:2px;
+    letter-spacing:0.5px;
+  }
+  .pill-plus{
+    font-size:24px;
+    font-weight:900;
+    color:var(--gold);
+  }
+  .schedule-note{
+    text-align:center;
+    font-size:13.5px;
+    color:var(--muted);
+    margin-top:14px;
+    line-height:1.6;
+  }
+  .schedule-detail{
+    margin-top:24px;
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 4px 16px rgba(13,27,46,0.06);
+  }
+  .schedule-detail-row{
+    display:grid;
+    grid-template-columns:60px 1fr;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    align-items:center;
+  }
+  .schedule-detail-row:last-child{border-bottom:0}
+  .sd-day{font-weight:800;color:var(--gold-dark);font-size:14px}
+  .sd-content{font-size:13.5px}
+  .sd-time{font-size:12px;color:var(--muted);margin-right:6px;font-weight:700}
+  .sd-title{font-weight:700;color:var(--navy)}
+
+  /* ============ VIDEO + TEACHER ============ */
+  .teacher-block{
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 6px 24px rgba(13,27,46,0.08);
+  }
+  .video-wrap{
+    position:relative;
+    width:100%;
+    padding-bottom:56.25%;
+    background:var(--navy);
+  }
+  .video-wrap iframe,.video-placeholder{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    border:0;
+  }
+  .video-placeholder{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:rgba(255,255,255,0.75);
+    text-align:center;
+    padding:20px;
+  }
+  .video-placeholder .vp-icon{font-size:48px;margin-bottom:10px}
+  .video-placeholder .vp-text{font-size:15px;font-weight:700;color:var(--gold)}
+  .video-placeholder .vp-sub{font-size:13px;margin-top:6px;color:rgba(255,255,255,0.55)}
+  .teacher-info{
+    padding:22px 24px 24px;
+    border-top:3px solid var(--gold);
+  }
+  .teacher-tag{
+    display:inline-block;
+    background:var(--navy);
+    color:var(--gold);
+    padding:4px 10px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:10px;
+  }
+  .teacher-name{
+    font-size:18px;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:8px;
+  }
+  .teacher-desc{
+    font-size:13.5px;
+    color:var(--muted);
+    line-height:1.6;
+  }
+
+  /* ============ UNIVERSITY ============ */
+  .uni-group{
+    background:#fff;
+    border-radius:14px;
+    padding:22px;
+    margin-bottom:12px;
+    box-shadow:0 4px 16px rgba(13,27,46,0.06);
+  }
+  .uni-group h4{
+    font-size:14px;
+    color:var(--gold-dark);
+    font-weight:800;
+    margin-bottom:14px;
+    letter-spacing:0.5px;
+  }
+  .uni-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .uni-chip{
+    background:var(--cream-2);
+    color:var(--navy);
+    padding:10px 16px;
+    border-radius:30px;
+    font-size:13.5px;
+    font-weight:700;
+    border:1px solid rgba(13,27,46,0.08);
+  }
+  .uni-note{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:14px;
+    line-height:1.55;
+    text-align:center;
+  }
+
+  /* ============ PRICE ============ */
+  .price-box{
+    background:linear-gradient(135deg,var(--navy-2) 0%,var(--navy) 100%);
+    color:#fff;
+    border-radius:18px;
+    padding:34px 26px 30px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(13,27,46,0.25);
+    border:1px solid rgba(212,168,67,0.2);
+  }
+  .price-launch{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--navy);
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+  .price-row{
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+    gap:10px;
+    margin:10px 0;
+  }
+  .price-label{font-size:14.5px;color:rgba(255,255,255,0.8);font-weight:600}
+  .price-value{
+    font-size:30px;
+    font-weight:900;
+    color:var(--gold);
+    letter-spacing:-0.5px;
+  }
+  .price-divider{
+    width:50px;
+    height:1px;
+    background:rgba(255,255,255,0.2);
+    margin:14px auto;
+  }
+  .price-detail{
+    font-size:13.5px;
+    color:rgba(255,255,255,0.8);
+    line-height:1.75;
+  }
+
+  /* ============ CTA SECTION ============ */
+  .cta-section{
+    background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%);
+    text-align:center;
+    padding:56px 0;
+  }
+  .cta-section h2{margin-bottom:14px}
+  .cta-section p.lead{
+    font-size:15px;
+    color:#3a3a3a;
+    margin-bottom:28px;
+    line-height:1.7;
+  }
+  .cta-section .cta-btn{
+    background:linear-gradient(135deg,var(--navy-3) 0%,var(--navy) 100%);
+    color:var(--gold);
+    box-shadow:0 6px 20px rgba(13,27,46,0.28);
+  }
+  .cta-section .cta-note{color:var(--muted)}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:#050a13;
+    color:rgba(255,255,255,0.65);
+    padding:36px 0 28px;
+    font-size:13px;
+    line-height:1.75;
+    text-align:center;
+  }
+  footer .footer-brand{
+    color:var(--gold);
+    font-weight:800;
+    font-size:14.5px;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  footer .footer-divider{
+    height:1px;
+    background:rgba(255,255,255,0.08);
+    margin:16px auto;
+    max-width:200px;
+  }
+  footer a{color:rgba(255,255,255,0.85);text-decoration:none}
+  .footer-copy{font-size:11.5px;color:rgba(255,255,255,0.4);margin-top:8px}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:560px){
+    .hero{padding:52px 0 48px}
+    .hero-logo{font-size:30px}
+    .hero-tagline{font-size:16px}
+    section{padding:52px 0}
+    h2{font-size:22px}
+    .diag-card{padding:22px 20px}
+    .diag-card .num-big{font-size:46px;top:10px;right:14px}
+    .diag-card h3{font-size:16.5px}
+
+    .sys-circle{width:96px;height:96px}
+    .sys-icon{font-size:24px}
+    .sys-title{font-size:15px}
+
+    /* 로드맵 모바일 — 가로 스크롤 */
+    .roadmap{overflow-x:auto;padding:16px 4px;-webkit-overflow-scrolling:touch}
+    .rm-line{min-width:560px}
+    .rm-circle{width:54px;height:54px;font-size:13px}
+    .rm-label{font-size:11.5px}
+
+    .pill{min-width:auto;padding:12px 16px;font-size:13px}
+    .pill-plus{font-size:20px}
+    .price-value{font-size:24px}
+  }
+  @media (max-width:360px){
+    .hero-logo{font-size:26px}
+    h2{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+  <div class="container hero-inner">
+    <span class="hero-brand">PRIME K × MAXIMUM K · 2026</span>
+    <div class="hero-logo">REVENGE MATH</div>
+    <p class="hero-tagline">논술만으론 부족하다.<br><span class="accent">합격 운영 시스템.</span></p>
+    <div class="hero-target">📌 수학 3~5등급 · 인서울 약술형논술 합격 목표</div>
+    <p class="hero-sub">약술형논술 + 수능최저 + 모의고사 + 개별 컨설팅.<br>6개월 풀패키지로 완성하는 합격 운영 시스템.</p>
+    <div class="hero-meta">
+      <span class="badge solid">🚀 2026.06.06(토) 개강</span>
+      <span class="badge">정원 10명</span>
+      <span class="badge">6개월 운영</span>
+    </div>
+    <a href="tel:01064087421" class="cta-btn">📞 무료 진단 받기 · 010-6408-7421</a>
+    <p class="cta-note">K선생 직통 · 상담은 진단 후 안내</p>
+  </div>
+</header>
+
+<!-- ========== 1. DIAGNOSIS ========== -->
+<section>
+  <div class="container">
+    <div class="section-divider"><span>PROBLEM</span></div>
+    <h2><span class="num">01</span>왜 지금 리벤지수학인가</h2>
+    <p class="section-sub">수학 3~5등급 학생이 마주하는 현실</p>
+
+    <div class="diag-stack">
+      <div class="diag-card">
+        <div class="num-big">01</div>
+        <h3>수능만으론 불안합니다</h3>
+        <p>수학 3~5등급으로 정시 인서울은 점점 좁아지고 있습니다. 최저 충족도 쉽지 않은 구간. 수능 한 카드만으로는 합격 안정성이 떨어집니다.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num-big">02</div>
+        <h3>논술만으론 부족합니다</h3>
+        <p>약술형 대비만으로는 합격이 결정되지 않습니다. 최저 있는 대학은 결국 수능까지 잡혀야 하고, 최저 없는 대학도 경쟁률이 빠르게 올라가는 추세.</p>
+      </div>
+      <div class="diag-card">
+        <div class="num-big">03</div>
+        <h3>그래서 "합격 운영 시스템"입니다</h3>
+        <p>리벤지수학은 논술 한 축으로 끌고 가는 학원이 아닙니다. 6개월 합격에 필요한 <strong>네 축을 동시에 운영</strong>하는 풀패키지 시스템입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 2. 4 SYSTEMS ========== -->
+<section style="background:var(--cream-2);">
+  <div class="container">
+    <div class="section-divider"><span>SYSTEM</span></div>
+    <h2><span class="num">02</span>4대 운영 시스템</h2>
+    <p class="section-sub">합격에 필요한 네 축을 동시에 운영합니다</p>
+
+    <div class="sys-grid">
+      <div class="sys-item">
+        <div class="sys-circle">
+          <div class="sys-icon">✍️</div>
+          <div class="sys-num">SYSTEM 01</div>
+        </div>
+        <div class="sys-title">약술형논술 대비</div>
+        <div class="sys-desc">6개 대상 대학별 기출·예상 문항으로 풀이 루틴 완성</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-circle">
+          <div class="sys-icon">📊</div>
+          <div class="sys-num">SYSTEM 02</div>
+        </div>
+        <div class="sys-title">수능최저 관리</div>
+        <div class="sys-desc">평가원·사설 3개년 모의고사로 최저 충족 실시간 추적</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-circle">
+          <div class="sys-icon">📖</div>
+          <div class="sys-num">SYSTEM 03</div>
+        </div>
+        <div class="sys-title">국어 학습</div>
+        <div class="sys-desc">약술형 독해력의 핵심을 별도 정규 시간으로 잡습니다</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-circle">
+          <div class="sys-icon">🎯</div>
+          <div class="sys-num">SYSTEM 04</div>
+        </div>
+        <div class="sys-title">개별 컨설팅</div>
+        <div class="sys-desc">맥시멈K컨설팅 연계 · 6개 대학 맞춤 입시 전략 상시 점검</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. ROADMAP ========== -->
+<section class="roadmap-section">
+  <div class="container">
+    <div class="section-divider"><span>ROADMAP</span></div>
+    <h2><span class="num">03</span>6개월 운영 로드맵</h2>
+    <p class="section-sub">2026년 5월 ~ 11월 · 월별 합격 운영 단계</p>
+
+    <div class="roadmap">
+      <div class="rm-line">
+        <div class="rm-step">
+          <div class="rm-circle">5월</div>
+          <div class="rm-month">STEP 01</div>
+          <div class="rm-label">진단·등록</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-circle">6월</div>
+          <div class="rm-month">STEP 02</div>
+          <div class="rm-label">개강·기본기</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-circle">7월</div>
+          <div class="rm-month">STEP 03</div>
+          <div class="rm-label">심화 ①</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-circle">8월</div>
+          <div class="rm-month">STEP 04</div>
+          <div class="rm-label">심화 ②</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-circle">9~10월</div>
+          <div class="rm-month">STEP 05</div>
+          <div class="rm-label">모의·파이널</div>
+        </div>
+        <div class="rm-step">
+          <div class="rm-circle">11월</div>
+          <div class="rm-month">STEP 06</div>
+          <div class="rm-label">본 시험</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12.5px;color:rgba(255,255,255,0.55);margin-top:24px">※ 모바일에서는 좌우로 스크롤됩니다</p>
+  </div>
+</section>
+
+<!-- ========== 4. SCHEDULE ========== -->
+<section>
+  <div class="container">
+    <div class="section-divider"><span>SCHEDULE</span></div>
+    <h2><span class="num">04</span>주말 풀패키지 시간표</h2>
+    <p class="section-sub">정규 수업 + 모의고사 + 컨설팅 — 세 축이 매주 돕니다</p>
+
+    <div class="pill-row">
+      <div class="pill"><span class="pill-time">SAT</span>토 정규 5h</div>
+      <div class="pill-plus">+</div>
+      <div class="pill"><span class="pill-time">SUN</span>일 모의고사</div>
+      <div class="pill-plus">+</div>
+      <div class="pill"><span class="pill-time">ALL</span>상시 컨설팅</div>
+    </div>
+
+    <div class="schedule-detail">
+      <div class="schedule-detail-row">
+        <div class="sd-day">토</div>
+        <div class="sd-content">
+          <div><span class="sd-time">13:00–15:00</span><span class="sd-title">국어 (논술 대비)</span></div>
+        </div>
+      </div>
+      <div class="schedule-detail-row">
+        <div class="sd-day">토</div>
+        <div class="sd-content">
+          <div><span class="sd-time">15:00–18:00</span><span class="sd-title">수학 (약술형 논술)</span></div>
+        </div>
+      </div>
+      <div class="schedule-detail-row">
+        <div class="sd-day">일</div>
+        <div class="sd-content">
+          <div><span class="sd-time">전과목</span><span class="sd-title">모의고사반 + 인강 풀이</span></div>
+        </div>
+      </div>
+      <div class="schedule-detail-row">
+        <div class="sd-day">상시</div>
+        <div class="sd-content">
+          <div><span class="sd-time">개별</span><span class="sd-title">맞춤 컨설팅 (맥시멈K 연계)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. VIDEO + TEACHER ========== -->
+<section style="background:var(--cream-2);">
+  <div class="container">
+    <div class="section-divider"><span>TEACHER</span></div>
+    <h2><span class="num">05</span>K선생이 직접 안내합니다</h2>
+    <p class="section-sub">더루멘 채널 · 리벤지수학 시리즈</p>
+
+    <div class="teacher-block">
+      <div class="video-wrap">
+        <div class="video-placeholder">
+          <div class="vp-icon">🎥</div>
+          <div class="vp-text">콘텐츠 준비 중</div>
+          <div class="vp-sub">리벤지수학 시리즈 영상 곧 업데이트</div>
+        </div>
+      </div>
+      <div class="teacher-info">
+        <span class="teacher-tag">CHIEF · K선생</span>
+        <div class="teacher-name">김범수 원장</div>
+        <p class="teacher-desc">프라임K수학 원장 · 맥시멈K컨설팅 운영. 인서울 합격생 다수 배출. 입시 컨설팅과 수학 정규 수업을 한 사람이 책임지는 흔치 않은 구조로 6개월 동안 학생 한 명 한 명을 직접 추적합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. UNIVERSITIES ========== -->
+<section>
+  <div class="container">
+    <div class="section-divider"><span>TARGET</span></div>
+    <h2><span class="num">06</span>대상 대학 6곳</h2>
+    <p class="section-sub">2027학년도 약술형논술 시행 대학 기준</p>
+
+    <div class="uni-group">
+      <h4>📌 최저 있음 (수능최저 충족 필요)</h4>
+      <div class="uni-list">
+        <span class="uni-chip">가천대</span>
+        <span class="uni-chip">한국외대 글로벌</span>
+        <span class="uni-chip">홍익대 세종</span>
+      </div>
+    </div>
+    <div class="uni-group">
+      <h4>📌 최저 없음</h4>
+      <div class="uni-list">
+        <span class="uni-chip">한국공학대</span>
+        <span class="uni-chip">상명대 <small style="font-weight:500;color:var(--muted)">(10월말 시험)</small></span>
+        <span class="uni-chip">한국기술교육대</span>
+      </div>
+    </div>
+    <p class="uni-note">※ 2027학년도 최종 모집요강 확정 시 대상 대학·전형 일부 변경될 수 있으며, 입학 상담 시 최신 정보로 재안내합니다.</p>
+  </div>
+</section>
+
+<!-- ========== 7. PRICE ========== -->
+<section style="background:var(--cream-2);">
+  <div class="container">
+    <div class="section-divider"><span>ENROLLMENT</span></div>
+    <h2><span class="num">07</span>모집 안내</h2>
+    <p class="section-sub">정원·수강료·운영 기간</p>
+
+    <div class="price-box">
+      <div class="price-launch">🚀 2026년 6월 6일(토) 개강</div>
+      <div class="price-row">
+        <span class="price-label">정원</span>
+        <span class="price-value">10명</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">수강료</span>
+        <span class="price-value">월 69만원</span>
+      </div>
+      <div class="price-divider"></div>
+      <div class="price-detail">
+        2026년 5월 ~ 11월 · 총 6개월<br>
+        토요일 5시간 정규 + 일요일 모의고사<br>
+        상시 개별 컨설팅 포함
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-divider"><span>NEXT STEP</span></div>
+    <h2>무료 진단부터 시작합니다</h2>
+    <p class="lead">현재 수학·국어 성적, 지원 가능 대학, 6개월 학습 가능성까지<br>K선생이 직접 진단해드립니다.</p>
+    <a href="tel:01064087421" class="cta-btn">📞 010-6408-7421 · 지금 전화하기</a>
+    <p class="cta-note">프라임K수학 · 맥시멈K컨설팅 K선생 직통</p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">PRIME K × MAXIMUM K</div>
+    <div>프라임K수학 · 맥시멈K컨설팅 · 김범수 원장</div>
+    <div class="footer-divider"></div>
+    <div>📍 대전광역시 중구 목동</div>
+    <div>📞 <a href="tel:01064087421">010-6408-7421</a></div>
+    <div>✍️ <a href="https://blog.naver.com/maximumk1010" target="_blank" rel="noopener">blog.naver.com/maximumk1010</a></div>
+    <div class="footer-divider"></div>
+    <div class="footer-copy">© 2026 프라임K수학 · 리벤지수학은 프라임K수학·맥시멈K컨설팅의 공동 운영 프로그램입니다.</div>
+  </div>
+</footer>
+
+</body>
+</html>
